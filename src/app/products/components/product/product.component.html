@@ -1,0 +1,15 @@
+<div class="product-container">
+	<h3>{{ product.name }}</h3>
+	<p>
+		<strong>Description</strong>
+		<br>
+		<span>{{ product.description }}</span>
+	</p>
+	<ul>
+		<li>Price: {{ product.price }} </li>
+		<li>Category: {{ product.category }}</li>
+		<li *ngIf="product.isAvailable; else elseBlock" class="in-stock">In stock.</li>
+		<ng-template #elseBlock><li class="not-in-stock">Not in stock</li></ng-template>
+	</ul>
+	<button type="button" (click)="onBuy()" [disabled]="!product.isAvailable">Buy</button>
+</div>
