@@ -1,0 +1,11 @@
+app-product-list {
+	width: 70%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+app-cart-list {
+	width: 30%;
+	display: inline-block;
+	vertical-align: top;
+}
