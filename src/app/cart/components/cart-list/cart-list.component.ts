@@ -9,7 +9,7 @@ import { CartItem } from '../../models/cart-item';
   styleUrls: ['./cart-list.component.css']
 })
 export class CartListComponent implements OnInit {
-  cartItems: Array<CartItem>
+  cartItems: Array<CartItem>;
 
   constructor(public cartService: CartService) { }
 

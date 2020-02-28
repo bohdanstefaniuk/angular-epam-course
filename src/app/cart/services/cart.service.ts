@@ -6,13 +6,13 @@ import { CartItem } from '../models/cart-item';
   providedIn: 'root'
 })
 export class CartService {
-  cartItems: Array<CartItem> = new Array<CartItem>();
-  cartTotal: number = 0;
+  cartItems = new Array<CartItem>();
+  cartTotal = 0;
 
   constructor() { }
 
   addToCart(product: Product) {
-    var cartItem = this.cartItems.find(x => x.name == product.name);
+    let cartItem = this.cartItems.find(x => x.name === product.name);
     if (cartItem) {
       this.increaseCarItem(cartItem);
     } else {
@@ -29,26 +29,26 @@ export class CartService {
     this.deleteCartItem(cartItem);
     this.cartTotal -= cartItem.count * cartItem.pricePerOne;
   }
- 
+
   increaseCarItem(cartItem: CartItem) {
     cartItem.count++;
     cartItem.total = cartItem.pricePerOne * cartItem.count;
     this.cartTotal += cartItem.pricePerOne;
     console.log('Cart: added existing product');
   }
-  
+
   decreaseCartItem(cartItem: CartItem) {
-    var cartItem = this.cartItems.find(x => x.name == cartItem.name);
-    if (!cartItem) {
+    const existCartItem = this.cartItems.find(x => x.name === cartItem.name);
+    if (!existCartItem) {
       return;
     }
 
-    if (cartItem.count == 1) {
-      this.deleteCartItem(cartItem);
+    if (existCartItem.count === 1) {
+      this.deleteCartItem(existCartItem);
     } else {
-      cartItem.count--;
-      cartItem.total = cartItem.pricePerOne * cartItem.count;
-      console.log("Cart: product count decrease");
+      existCartItem.count--;
+      existCartItem.total = cartItem.pricePerOne * cartItem.count;
+      console.log('Cart: product count decrease');
     }
 
     this.cartTotal -= cartItem.pricePerOne;
@@ -58,7 +58,7 @@ export class CartService {
     const index = this.cartItems.indexOf(cartItem, 0);
     if (index > -1) {
       this.cartItems.splice(index, 1);
-      console.log("Cart: product count = 0 and deleted from cart");
+      console.log('Cart: product count = 0 and deleted from cart');
     }
   }
 }

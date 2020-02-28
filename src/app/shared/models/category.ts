@@ -1,6 +1,6 @@
 export enum ProductCategory {
-	Phones,
-	Computers,
-	Tablets,
-	Accessories
+  Phones,
+  Computers,
+  Tablets,
+  Accessories
 }

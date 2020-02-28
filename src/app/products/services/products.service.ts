@@ -10,22 +10,22 @@ export class ProductsService {
   constructor() { }
 
   getProducts(): Array<Product> {
-    let products = new Array<Product>();
-    let product1 = new Product();
+    const products = new Array<Product>();
+    const product1 = new Product();
     product1.name = 'iPhone XR 128 Gb Black';
     product1.category = ProductCategory.Phones;
     product1.description = 'Brand new iPhone XR';
     product1.isAvailable = true;
     product1.price = 21000;
 
-    let product2 = new Product();
+    const product2 = new Product();
     product2.name = 'iPhone XS Max 128 Gb Gold';
     product2.category = ProductCategory.Phones;
     product2.description = 'Brand new iPhone X';
     product2.isAvailable = false;
     product2.price = 28530;
 
-    let computer1 = new Product();
+    const computer1 = new Product();
     computer1.name = 'MacBook Pro 13\' 2017 128 Gb';
     computer1.category = ProductCategory.Computers;
     computer1.description = 'Professional tool for real professionals';

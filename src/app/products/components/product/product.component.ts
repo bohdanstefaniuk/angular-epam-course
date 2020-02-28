@@ -7,7 +7,7 @@ import { Product } from '../../../shared/models/product';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent{
+export class ProductComponent {
   @Input() product: Product;
   @Output() buy = new EventEmitter<Product>();
 
