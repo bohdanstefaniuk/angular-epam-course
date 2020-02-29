@@ -6,11 +6,9 @@ import { ProductCategory } from '../../shared/models/category';
   providedIn: 'root'
 })
 export class ProductsService {
+  products = new Array<Product>();
 
-  constructor() { }
-
-  getProducts(): Array<Product> {
-    const products = new Array<Product>();
+  constructor() {
     const product1 = new Product();
     product1.name = 'iPhone XR 128 Gb Black';
     product1.category = ProductCategory.Phones;
@@ -32,10 +30,16 @@ export class ProductsService {
     computer1.isAvailable = true;
     computer1.price = 75800;
 
-    products.push(product1);
-    products.push(product2);
-    products.push(computer1);
+    this.products.push(product1);
+    this.products.push(product2);
+    this.products.push(computer1);
+  }
 
-    return products;
+  getProducts(): Array<Product> {
+    return this.products;
+  }
+
+  addProduct(newProduct: Product) {
+    this.products.push(newProduct);
   }
 }
