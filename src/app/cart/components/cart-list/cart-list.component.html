@@ -1,11 +1,12 @@
 <p *ngIf="cartItems.length == 0; else cartNotEmpty"><strong>Cart is empty :-(</strong></p>
 <ng-template #cartNotEmpty>
 	<p><strong>Your cart</strong></p>
-	<app-cart-item 
+	<app-cart-item appHighlight
 		*ngFor="let cartItem of cartItems" [cartItem]="cartItem"
 		(decreaseItem)="onDecreaseItem($event)"
 		(increaseItem)="onIncreaseItem($event)"
-		(removeItem)="onRemoveItem($event)">
+		(removeItem)="onRemoveItem($event)"
+		(click)="0">
 	</app-cart-item>
 	<hr>
 	<p>Total: {{ cartService.cartTotal }}</p>

@@ -1,5 +1,5 @@
 <div>
-	<h1>Our products</h1>
+	<p><strong>Our products</strong></p>
 	<p>Product count: {{ products.length }}</p>
 	<app-product *ngFor="let product of products" [product]="product" (buy)="onBuy($event)"></app-product>
 </div>
