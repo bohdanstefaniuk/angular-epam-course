@@ -6,14 +6,14 @@ export const Random10 = new InjectionToken<string>('Random10');
 export function GeneratorFactory(n: number) {
   return (generator: GeneratorService): string => {
     return generator.generate(n);
-  }
+  };
 }
 
 @Injectable()
 export class GeneratorService {
-  chars: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   charsLength: number = this.chars.length;
-  
+
   constructor() { }
 
   generate(n: number): string {
@@ -21,11 +21,11 @@ export class GeneratorService {
     for (let i = 0; i < n; i++) {
       result += this.getChar();
     }
-    return result
+    return result;
   }
 
   private getChar() {
-    let index = Math.floor(Math.random() * this.charsLength);
+    const index = Math.floor(Math.random() * this.charsLength);
     return this.chars.charAt(index);
   }
 }

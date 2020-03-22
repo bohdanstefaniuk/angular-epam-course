@@ -1,14 +1,13 @@
 import { Directive, ElementRef, Renderer2, HostListener, Input } from '@angular/core';
 
 @Directive({
-  selector: '[clickHighlight]'
+  selector: '[appClickHighlight]'
 })
 export class ClickHighlightDirective {
-  @Input('color')
-  color: string = 'LightGreen';
+  @Input()
+color = 'LightGreen';
 
-  constructor(private element: ElementRef,
-    private renderer: Renderer2) { }
+  constructor(private element: ElementRef, private renderer: Renderer2) { }
 
   @HostListener('click')
   onClick() {

@@ -14,7 +14,7 @@ export class AddProductComponent implements OnInit {
   category: ProductCategory;
   isAvailable: boolean;
   categories = this.enumSelector(ProductCategory);
-  
+
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {

@@ -15,9 +15,7 @@ import { Random5, Random10, GeneratorFactory, GeneratorService } from 'src/app/c
 })
 export class AboutComponent implements OnInit {
 
-  constructor(public constants: ConstantService,
-    @Inject(Random5) public random5: string,
-    @Inject(Random10) public random10: string,) { }
+  constructor(public constants: ConstantService, @Inject(Random5) public random5: string, @Inject(Random10) public random10: string) {}
 
   ngOnInit() {
   }

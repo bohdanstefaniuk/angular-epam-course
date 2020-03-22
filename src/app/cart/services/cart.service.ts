@@ -13,7 +13,7 @@ export class CartService {
   constructor() { }
 
   addProduct(product: Product) {
-    let cartItem = this.cartItems.find(x => x.name === product.name);
+    const cartItem = this.cartItems.find(x => x.name === product.name);
     if (cartItem) {
       this.increaseQuantity(cartItem);
     } else {
@@ -54,7 +54,7 @@ export class CartService {
   }
 
   private createCartItem(product: Product) {
-    let cartItem = new CartItem();
+    const cartItem = new CartItem();
     cartItem.name = product.name;
     cartItem.pricePerOne = product.price;
     cartItem.count = 1;
@@ -72,15 +72,12 @@ export class CartService {
 
   private updateCartData() {
     let cartQuantity = 0;
-    this.cartItems.forEach(function(item) {
+    let cartSum = 0;
+    this.cartItems.forEach((item) => {
       cartQuantity += item.count;
+      cartSum += item.total;
     });
     this.cartQuantity = cartQuantity;
-
-    let cartSum = 0;
-    this.cartItems.forEach(function(item) {
-      cartQuantity += item.total;
-    });
     this.cartSum = cartSum;
   }
 }

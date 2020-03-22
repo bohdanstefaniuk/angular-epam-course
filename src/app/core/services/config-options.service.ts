@@ -6,7 +6,7 @@ import { Options } from '../models/options.module';
   providedIn: 'root'
 })
 export class ConfigOptionsService {
-  optionsKey = "app-options";
+  optionsKey = 'app-options';
   options: Options;
 
   constructor(private localStorage: LocalStorageService) {
@@ -22,7 +22,7 @@ export class ConfigOptionsService {
     this.options.id = options.id || this.options.id;
     this.options.login = options.login || this.options.login;
     this.options.email = options.email || this.options.email;
-    this.localStorage.setItem("app-options", this.options);
+    this.localStorage.setItem('app-options', this.options);
   }
 
   getOptions(): Options {
