@@ -57,7 +57,7 @@ export class CartService {
     const cartItem = new CartItem();
     cartItem.name = product.name;
     cartItem.pricePerOne = product.price;
-    cartItem.count = 1;
+    cartItem.increase();
     this.cartItems.push(cartItem);
     this.updateCartData();
   }
