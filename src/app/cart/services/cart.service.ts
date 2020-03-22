@@ -7,37 +7,32 @@ import { CartItem } from '../models/cart-item';
 })
 export class CartService {
   cartItems = new Array<CartItem>();
-  cartTotal = 0;
+  cartSum = 0;
+  cartQuantity = 0;
 
   constructor() { }
 
-  addToCart(product: Product) {
+  addProduct(product: Product) {
     let cartItem = this.cartItems.find(x => x.name === product.name);
     if (cartItem) {
-      this.increaseCarItem(cartItem);
+      this.increaseQuantity(cartItem);
     } else {
-      cartItem = new CartItem();
-      cartItem.name = product.name;
-      cartItem.pricePerOne = product.price;
-      this.increaseCarItem(cartItem);
-      this.cartItems.push(cartItem);
-      console.log('Cart: added new product');
+      this.createCartItem(product);
     }
   }
 
-  removeCarItem(cartItem: CartItem) {
+  removeCartItem(cartItem: CartItem) {
     this.deleteCartItem(cartItem);
-    this.cartTotal -= cartItem.count * cartItem.pricePerOne;
+    this.updateCartData();
   }
 
-  increaseCarItem(cartItem: CartItem) {
-    cartItem.count++;
-    cartItem.total = cartItem.pricePerOne * cartItem.count;
-    this.cartTotal += cartItem.pricePerOne;
+  increaseQuantity(cartItem: CartItem) {
+    cartItem.increase();
+    this.updateCartData();
     console.log('Cart: added existing product');
   }
 
-  decreaseCartItem(cartItem: CartItem) {
+  decreaseQuantity(cartItem: CartItem) {
     const existCartItem = this.cartItems.find(x => x.name === cartItem.name);
     if (!existCartItem) {
       return;
@@ -46,12 +41,25 @@ export class CartService {
     if (existCartItem.count === 1) {
       this.deleteCartItem(existCartItem);
     } else {
-      existCartItem.count--;
-      existCartItem.total = cartItem.pricePerOne * cartItem.count;
+      existCartItem.decrease();
       console.log('Cart: product count decrease');
     }
 
-    this.cartTotal -= cartItem.pricePerOne;
+    this.updateCartData();
+  }
+
+  cleanCart() {
+    this.cartItems = new Array<CartItem>();
+    this.updateCartData();
+  }
+
+  private createCartItem(product: Product) {
+    let cartItem = new CartItem();
+    cartItem.name = product.name;
+    cartItem.pricePerOne = product.price;
+    cartItem.count = 1;
+    this.cartItems.push(cartItem);
+    this.updateCartData();
   }
 
   private deleteCartItem(cartItem: CartItem) {
@@ -60,5 +68,19 @@ export class CartService {
       this.cartItems.splice(index, 1);
       console.log('Cart: product count = 0 and deleted from cart');
     }
+  }
+
+  private updateCartData() {
+    let cartQuantity = 0;
+    this.cartItems.forEach(function(item) {
+      cartQuantity += item.count;
+    });
+    this.cartQuantity = cartQuantity;
+
+    let cartSum = 0;
+    this.cartItems.forEach(function(item) {
+      cartQuantity += item.total;
+    });
+    this.cartSum = cartSum;
   }
 }
