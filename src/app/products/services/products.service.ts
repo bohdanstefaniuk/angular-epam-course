@@ -15,6 +15,7 @@ export class ProductsService {
     product1.description = 'Brand new iPhone XR';
     product1.isAvailable = true;
     product1.price = 21000;
+    product1.createdOn = new Date();
 
     const product2 = new Product();
     product2.name = 'iPhone XS Max 128 Gb Gold';
@@ -22,6 +23,7 @@ export class ProductsService {
     product2.description = 'Brand new iPhone X';
     product2.isAvailable = false;
     product2.price = 28530;
+    product2.createdOn = new Date(2020, 1, 20);
 
     const computer1 = new Product();
     computer1.name = 'MacBook Pro 13\' 2017 128 Gb';
@@ -29,6 +31,7 @@ export class ProductsService {
     computer1.description = 'Professional tool for real professionals';
     computer1.isAvailable = true;
     computer1.price = 75800;
+    computer1.createdOn = new Date(2020, 3, 8);
 
     this.products.push(product1);
     this.products.push(product2);

@@ -6,8 +6,8 @@
 		<span>{{ product.description }}</span>
 	</p>
 	<ul>
-		<li>Price: {{ product.price }} </li>
-		<li>Category: {{ product.category }}</li>
+		<li>Price: {{ product.price | currency:'USD' }} </li>
+		<li>Category: {{ productCategory | uppercase }}</li>
 		<li *ngIf="product.isAvailable; else elseBlock" class="in-stock">In stock.</li>
 		<ng-template #elseBlock><li class="not-in-stock">Not in stock</li></ng-template>
 	</ul>

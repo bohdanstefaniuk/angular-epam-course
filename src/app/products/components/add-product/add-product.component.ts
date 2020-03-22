@@ -32,6 +32,7 @@ export class AddProductComponent implements OnInit {
     newProduct.price = this.price;
     newProduct.category = this.category;
     newProduct.isAvailable = this.isAvailable;
+    newProduct.createdOn = new Date();
     this.productsService.addProduct(newProduct);
   }
 }
