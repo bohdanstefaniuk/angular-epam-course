@@ -1,8 +1,7 @@
 <div>
 	<p><strong>Our products</strong></p>
-	<p>Product count: {{ products.length }}</p>
 	<app-product 
-		*ngFor="let product of products" 
+		*ngFor="let product of products | async" 
 		[product]="product" 
 		(buy)="onBuy($event)"></app-product>
 </div>

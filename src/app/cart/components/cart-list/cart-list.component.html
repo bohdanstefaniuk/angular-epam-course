@@ -1,8 +1,14 @@
 <p *ngIf="cartItems.length == 0; else cartNotEmpty"><strong>Cart is empty :-(</strong></p>
 <ng-template #cartNotEmpty>
 	<p><strong>Your cart</strong></p>
+	<p>Order by: 
+		<select [(ngModel)]="orderByProp">
+			<option *ngFor="let property of orderByList" value="{{property}}">{{ property }}</option>
+		</select>
+	</p>
+	<hr>
 	<app-cart-item appHighlight
-		*ngFor="let cartItem of cartItems" [cartItem]="cartItem"
+		*ngFor="let cartItem of cartItems | orderBy:orderByProp:true" [cartItem]="cartItem"
 		(decreaseItem)="onDecreaseItem($event)"
 		(increaseItem)="onIncreaseItem($event)"
 		(removeItem)="onRemoveItem($event)"

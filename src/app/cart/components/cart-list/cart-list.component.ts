@@ -10,8 +10,13 @@ import { CartItem } from '../../models/cart-item';
 })
 export class CartListComponent implements OnInit {
   cartItems: Array<CartItem>;
+  orderByList: Array<string>;
+  orderByProp: string;
 
-  constructor(public cartService: CartService) { }
+  constructor(public cartService: CartService) {
+    this.orderByList = this.getCartItemProps();
+    this.orderByProp = this.orderByList[0];
+  }
 
   ngOnInit() {
     this.cartItems = this.cartService.cartItems;
@@ -31,5 +36,10 @@ export class CartListComponent implements OnInit {
 
   onRemoveAllItems() {
     this.cartService.cleanCart();
+  }
+
+  getCartItemProps(): Array<string> {
+    var emptyCartItem = new CartItem();
+    return Object.getOwnPropertyNames(emptyCartItem);
   }
 }
