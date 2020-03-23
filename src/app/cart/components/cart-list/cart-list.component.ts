@@ -39,7 +39,7 @@ export class CartListComponent implements OnInit {
   }
 
   getCartItemProps(): Array<string> {
-    var emptyCartItem = new CartItem();
+    const emptyCartItem = new CartItem();
     return Object.getOwnPropertyNames(emptyCartItem);
   }
 }

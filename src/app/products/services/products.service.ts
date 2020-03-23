@@ -38,8 +38,8 @@ export class ProductsService {
     this.products.push(product1);
     this.products.push(product2);
     this.products.push(computer1);
-    this.promise = Observable.create(observer => {
-      observer.next(this.products)
+    this.promise = new Observable(observer => {
+      observer.next(this.products);
     });
   }
 
