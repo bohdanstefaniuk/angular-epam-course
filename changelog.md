@@ -1,4 +1,9 @@
-#Version 1.2
+# Version 1.3
+- Added pipes for formatting prices, category and product add date;
+- Changed return type in ProductService from Array of products to Observable;
+- Added OrderBy pipe for cart items;
+
+# Version 1.2
 - Added About component;
 - Added service for working with local storage;
 - Added directive which changing element border color on click;
