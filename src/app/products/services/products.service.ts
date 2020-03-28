@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../shared/models/product';
 import { ProductCategory } from '../../shared/models/category';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
-  products = new Array<Product>();
-  promise: Observable<Array<Product>>;
+export class ProductsService {  
+  products: Observable<Array<Product>>;
+
+  private productsArray = new Array<Product>();
 
   constructor() {
     const product1 = new Product();
@@ -35,19 +36,17 @@ export class ProductsService {
     computer1.price = 75800;
     computer1.createdOn = new Date(2020, 3, 8);
 
-    this.products.push(product1);
-    this.products.push(product2);
-    this.products.push(computer1);
-    this.promise = new Observable(observer => {
-      observer.next(this.products);
-    });
+    this.productsArray.push(product1);
+    this.productsArray.push(product2);
+    this.productsArray.push(computer1);
+    this.products = of(this.productsArray);
   }
 
   getProducts(): Observable<Array<Product>> {
-    return this.promise;
+    return this.products;
   }
 
   addProduct(newProduct: Product) {
-    this.products.push(newProduct);
+    this.productsArray.push(newProduct);
   }
 }
