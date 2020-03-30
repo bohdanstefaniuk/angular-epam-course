@@ -9,3 +9,37 @@ app-cart-list {
 	display: inline-block;
 	vertical-align: top;
 }
+
+#menu {
+	padding: 15px;
+	border: 1px black solid;
+}
+
+#menu h3 {
+	display: inline;
+}
+
+#menu ul {
+	display: inline;
+	margin: 0;
+}
+
+#menu ul li {
+	display: inline;
+	margin-right: 10px;
+	padding: 0 10px 0 10px;
+	border: 1px lightblue dashed;
+	cursor: pointer;
+}
+
+#menu ul li:hover {
+	background-color: lightblue;
+}
+
+.active {
+	background-color: aquamarine;
+}
+
+#menu ul li a {
+	text-decoration: none;
+}

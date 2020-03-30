@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../models/cart-item';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-list',
@@ -13,7 +14,9 @@ export class CartListComponent implements OnInit {
   orderByList: Array<string>;
   orderByProp: string;
 
-  constructor(public cartService: CartService) {
+  constructor(
+    private router: Router,
+    public cartService: CartService) {
     this.orderByList = this.getCartItemProps();
     this.orderByProp = this.orderByList[0];
   }
@@ -41,5 +44,9 @@ export class CartListComponent implements OnInit {
   getCartItemProps(): Array<string> {
     const emptyCartItem = new CartItem();
     return Object.getOwnPropertyNames(emptyCartItem);
+  }
+
+  onOrder() {
+    this.router.navigate(['/order']);
   }
 }

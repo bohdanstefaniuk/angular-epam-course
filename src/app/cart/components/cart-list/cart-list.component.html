@@ -6,7 +6,6 @@
 			<option *ngFor="let property of orderByList" value="{{property}}">{{ property }}</option>
 		</select>
 	</p>
-	<hr>
 	<app-cart-item appHighlight
 		*ngFor="let cartItem of cartItems | orderBy:orderByProp:true" [cartItem]="cartItem"
 		(decreaseItem)="onDecreaseItem($event)"
@@ -14,7 +13,7 @@
 		(removeItem)="onRemoveItem($event)"
 		(click)="0">
 	</app-cart-item>
-	<hr>
-	<p>Total: {{ cartService.cartSum }}</p>
-	<p>Quantity: {{ cartService.cartQuantity }}</p>
+	<p>In your cart {{ cartService.cartQuantity }} units of goods worth {{ cartService.cartSum | currency }}.</p>
+	<br>
+	<button (click)="onOrder()">Order</button>
 </ng-template>

@@ -1,8 +1,9 @@
 <div>
 	<p><strong>Our products</strong></p>
-	<app-product 
-		*ngFor="let product of products | async" 
-		[product]="product" 
-		(buy)="onBuy($event)"></app-product>
+	<ul>
+		<li *ngFor="let product of products | async" >
+			{{ product.name }}
+			<button (click)="onOpen(product.id)">Open</button>
+		</li>
+	</ul>
 </div>
-<app-add-product></app-add-product>

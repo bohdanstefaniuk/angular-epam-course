@@ -13,7 +13,7 @@ export class CartService {
   constructor() { }
 
   addProduct(product: Product) {
-    const cartItem = this.cartItems.find(x => x.name === product.name);
+    const cartItem = this.cartItems.find(x => x.productId === product.id);
     if (cartItem) {
       this.increaseQuantity(cartItem);
     } else {
@@ -33,7 +33,7 @@ export class CartService {
   }
 
   decreaseQuantity(cartItem: CartItem) {
-    const existCartItem = this.cartItems.find(x => x.name === cartItem.name);
+    const existCartItem = this.cartItems.find(x => x.productId === cartItem.productId);
     if (!existCartItem) {
       return;
     }
@@ -55,6 +55,7 @@ export class CartService {
 
   private createCartItem(product: Product) {
     const cartItem = new CartItem();
+    cartItem.productId = product.id;
     cartItem.name = product.name;
     cartItem.pricePerOne = product.price;
     cartItem.increase();

@@ -1,7 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { switchMap } from 'rxjs/operators';
 
 import { Product } from '../../../shared/models/product';
-import { ProductCategory } from 'src/app/shared/models/category';
+import { ProductsService } from '../../services/products.service';
+import { CartService } from 'src/app/cart';
 
 @Component({
   selector: 'app-product',
@@ -9,20 +13,30 @@ import { ProductCategory } from 'src/app/shared/models/category';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  @Input() product: Product;
-  @Output() buy = new EventEmitter<Product>();
-
+  product: Product;
   productCategory: string;
 
-  constructor() { }
+  constructor(
+    private productsService: ProductsService,
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
-    this.productCategory = ProductCategory[this.product.category];
+    this.product = new Product();
+    const observer = {
+      next: (product: Product) => { this.product = { ...product }; },
+      error: (err: any) => console.log(err)
+    };
+    this.activatedRoute.paramMap
+      .pipe(
+        switchMap((paramMap) => this.productsService.getProduct(+paramMap.get('productId')))
+      ).subscribe(observer);
   }
 
   onBuy() {
     console.log('Buy event: user buy product');
-    console.table(this.product);
-    this.buy.emit(this.product);
+    const product = { ...this.product } as Product;
+    this.cartService.addProduct(product);
   }
 }

@@ -5,10 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { SharedModule } from '../shared/shared.module';
-import { AddProductComponent } from './components/add-product/add-product.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 @NgModule({
-  declarations: [ProductComponent, ProductListComponent, AddProductComponent],
+  declarations: [ProductComponent, ProductListComponent, ProductFormComponent],
   imports: [
     CommonModule,
     SharedModule,

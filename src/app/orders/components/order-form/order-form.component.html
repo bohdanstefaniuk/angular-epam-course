@@ -1,0 +1,12 @@
+<h3>Complete you order</h3>
+<div class="order-form-container">
+	<div>
+		<p>Your name</p>
+		<input type="text" id="userName" [(ngModel)]="order.ordererName">
+	</div>
+	<div>
+		<p>Your address</p>
+		<input type="text" id="address" [(ngModel)]="order.address">
+	</div>
+	<button type="button" (click)="onSubmit()">Submit</button>
+</div>

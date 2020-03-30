@@ -1,3 +1,9 @@
+# VErsion 1.4
+- Improved UI;
+- Added routing;
+- Added order functionality;
+- Added main navigation bar;
+
 # Version 1.3
 - Added pipes for formatting prices, category and product add date;
 - Changed return type in ProductService from Array of products to Observable;

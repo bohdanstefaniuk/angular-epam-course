@@ -1,0 +1,23 @@
+<p><strong>Product: {{ product.name }}</strong></p>
+<div class="add-product-container">
+	<div>
+		<p>Name</p>
+		<input type="text" id="name" [(ngModel)]="product.name">
+	</div>
+	<div>
+		<p>Price</p>
+		<input type="number" id="price" [(ngModel)]="product.price">
+	</div>
+	<div>
+		<p>Category</p>
+		<select id="category" [(ngModel)]="category" [value]="product.category">
+			<option *ngFor="let category of categories" [value]="category.value">{{ category.title }}</option>
+		</select>
+	</div>
+	<div>
+		<p class="checkbox-title">Is available: </p>
+		<input type="checkbox" [(ngModel)]="product.isAvailable">
+	</div>
+	<button type="button" (click)="onSave()">Save</button>
+	<button type="button" (click)="onReturn()">Return</button>
+</div>
