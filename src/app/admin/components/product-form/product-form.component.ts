@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { switchMap } from 'rxjs/operators';
 
-import { ProductCategory } from 'src/app/shared/models/category';
-import { ProductsService } from '../../services/products.service';
-import { Product } from 'src/app/shared/models/product';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductCategory } from 'src/app/shared/models/category';
+import { Product } from 'src/app/shared/models/product';
+import { ProductsService } from 'src/app/products';
 
 @Component({
   selector: 'app-product-form',
@@ -51,6 +51,6 @@ export class ProductFormComponent implements OnInit {
   }
 
   onReturn() {
-    this.router.navigate(['/products']);
+    this.router.navigate(['/admin/products']);
   }
 }

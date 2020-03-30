@@ -10,7 +10,7 @@
 	</div>
 	<div>
 		<p>Category</p>
-		<select id="category" [(ngModel)]="category" [value]="product.category">
+		<select id="category" [value]="product.category">
 			<option *ngFor="let category of categories" [value]="category.value">{{ category.title }}</option>
 		</select>
 	</div>

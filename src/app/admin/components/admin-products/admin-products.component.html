@@ -1,0 +1,10 @@
+<div>
+	<p><strong>Products</strong></p>
+	<button (click)="onAdd()">Add new product</button>
+	<ul>
+		<li *ngFor="let product of products | async" >
+			{{ product.name }}
+			<button (click)="onEdit(product.id)">Edit</button>
+		</li>
+	</ul>
+</div>

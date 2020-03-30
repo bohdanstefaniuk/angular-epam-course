@@ -10,6 +10,9 @@ import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './layout/components/not-found/not-found.component';
 import { OrdersModule } from './orders/orders.module';
 import { CartService } from './cart';
+import { AdminModule } from './admin/admin.module';
+import { ProductsService } from './products';
+import { OrderService } from './orders';
 
 @NgModule({
   declarations: [
@@ -23,9 +26,10 @@ import { CartService } from './cart';
     CartModule,
     SharedModule,
     OrdersModule,
+    AdminModule,
     AppRoutingModule
   ],
-  providers: [CartService],
+  providers: [CartService, ProductsService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

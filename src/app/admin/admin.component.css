@@ -1,0 +1,17 @@
+#admin-nav {
+	padding: 10px;
+	border: 1px lightgray solid;
+}
+
+#admin-nav p {
+	display: inline;
+}
+
+#admin-nav ul {
+	display: inline;
+}
+
+#admin-nav ul li {
+	display: inline;
+	margin-left: 15px;
+}
