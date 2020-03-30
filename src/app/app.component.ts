@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { CartService } from './cart';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('appTitle', {static: false}) appTitleElement: ElementRef;
   title = 'shop';
 
-  constructor(public cartService: CartService) {}
+  constructor(
+    public cartService: CartService,
+    public auth: AuthService
+  ) {}
 
   ngOnInit(): void {
   }

@@ -13,12 +13,17 @@ import { CartService } from './cart';
 import { AdminModule } from './admin/admin.module';
 import { ProductsService } from './products';
 import { OrderService } from './orders';
+import { LoginComponent } from './layout/components/login/login.component';
+import { AuthService } from './core/services/auth.service';
+import { LogoutComponent } from './layout/components';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,7 @@ import { OrderService } from './orders';
     AdminModule,
     AppRoutingModule
   ],
-  providers: [CartService, ProductsService, OrderService],
+  providers: [CartService, ProductsService, OrderService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
