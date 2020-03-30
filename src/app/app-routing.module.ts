@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions, PreloadAllModules } from '@angular/router';
 
 import { NotFoundComponent, AboutComponent, LoginComponent, LogoutComponent } from './layout/components';
 import { ProductListComponent, ProductComponent } from './products';
 import { CartListComponent } from './cart';
 import { OrderFormComponent } from './orders';
+import { AdminGuard } from './core/guards/admin.guard';
 
 
 const routes: Routes = [
@@ -37,8 +38,14 @@ const routes: Routes = [
     component: LogoutComponent
   },
   {
+    path: 'admin',
+    canLoad: [AdminGuard],
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
     path: '',
-    component: ProductListComponent
+    component: ProductListComponent,
+    pathMatch: 'full'
   },
   {
     path: '**',
@@ -46,8 +53,12 @@ const routes: Routes = [
   }
 ];
 
+const extraOptions: ExtraOptions = {
+  preloadingStrategy: PreloadAllModules,
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, extraOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

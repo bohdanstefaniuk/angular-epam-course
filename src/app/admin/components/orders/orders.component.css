@@ -1,0 +1,6 @@
+.order {
+	width: fit-content;
+	min-width: 300px;
+	padding: 10px;
+	border: 1px lightcoral dashed;
+}

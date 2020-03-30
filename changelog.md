@@ -1,4 +1,10 @@
-# VErsion 1.4
+# Version 1.5
+- Added auth service;
+- Added Login ang Logout screens;
+- Added guard for admin panel;
+- Added orders and auth caching in local storage;
+
+# Version 1.4
 - Improved UI;
 - Added routing;
 - Added order functionality;

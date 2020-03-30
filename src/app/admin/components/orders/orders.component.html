@@ -1,1 +1,8 @@
-<p>orders works!</p>
+<p>Orders</p>
+<ul>
+	<li *ngFor="let order of orders | async" class="order">
+		<p>Orderer: {{ order.ordererName }}</p>
+		<p>Address: {{ order.address }}</p>
+		<p>Items quantity: {{ order.items.length }}</p>
+	</li>
+</ul>
