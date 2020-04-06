@@ -10,7 +10,7 @@ import { Order } from '../models/order';
   providedIn: 'root'
 })
 export class OrderService {
-  private baseUrl = 'http://localhost:3000/orders'
+  private baseUrl = 'http://localhost:3000/orders';
 
   constructor(
     private http: HttpClient
@@ -27,7 +27,7 @@ export class OrderService {
         retry(2),
         share(),
         catchError(this.errorHandler)
-      )
+      );
   }
 
   getOrders(): Observable<Array<Order>> {
@@ -41,11 +41,11 @@ export class OrderService {
   }
 
   private errorHandler(error: HttpErrorResponse) {
-		if (error.error instanceof Error) {
-			console.error('An error occurred:', error.error.message); 
-		} else {
-			console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
-		}
-		return throwError('Something bad happened; please try again later.');
-	}
+    if (error.error instanceof Error) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
+    }
+    return throwError('Something bad happened; please try again later.');
+  }
 }
