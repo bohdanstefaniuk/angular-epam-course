@@ -1,0 +1,11 @@
+ul li {
+	list-style: none;
+}
+
+.product {
+	margin-top: 10px;
+}
+
+.product button {
+	margin-right: 5px;
+}

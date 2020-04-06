@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { switchMap } from 'rxjs/operators';
 
-import { ActivatedRoute, Router } from '@angular/router';
 import { ProductCategory } from 'src/app/shared/models/category';
 import { Product } from 'src/app/shared/models/product';
 import { ProductsService } from 'src/app/products';
@@ -42,12 +42,9 @@ export class ProductFormComponent implements OnInit {
 
   onSave() {
     const product = { ...this.product } as Product;
-    if (product.id) {
-      this.productsService.updateProduct(product);
-    } else {
-      this.productsService.addProduct(product);
-    }
-    this.onReturn();
+    const method = product.id ? 'updateProduct' : 'addProduct';
+    this.productsService[method](product)
+      .then(() => this.onReturn());
   }
 
   onReturn() {

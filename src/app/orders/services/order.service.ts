@@ -1,31 +1,51 @@
 import { Injectable } from '@angular/core';
-import { Order } from '../models/order';
-import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
-const orderStorageKey = 'orders';
+import { Observable, throwError } from 'rxjs';
+import { retry, share, catchError } from 'rxjs/operators';
+
+import { Order } from '../models/order';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-  private orders = new Array<Order>();
+  private baseUrl = 'http://localhost:3000/orders'
 
   constructor(
-    private storage: LocalStorageService
-  ) {
-    const ordersFromStorage = storage.getItem<Array<Order>>(orderStorageKey);
-    if (ordersFromStorage) {
-      this.orders = ordersFromStorage;
-    }
+    private http: HttpClient
+  ) {}
+
+  addOrder(order: Order): Observable<Order> {
+    const json = JSON.stringify(order);
+    const options = {
+      headers: new HttpHeaders().append('Content-Type', 'application/json')
+    };
+    return this.http
+      .post<Order>(this.baseUrl, json, options)
+      .pipe(
+        retry(2),
+        share(),
+        catchError(this.errorHandler)
+      )
   }
 
-  addOrder(order: Order) {
-    this.orders.push(order);
-    this.storage.removeItem(orderStorageKey);
-    this.storage.setItem(orderStorageKey, this.orders);
+  getOrders(): Observable<Array<Order>> {
+    return this.http
+      .get<Array<Order>>(this.baseUrl)
+      .pipe(
+        retry(2),
+        share(),
+        catchError(this.errorHandler)
+      );
   }
 
-  getOrders(): Promise<Array<Order>> {
-    return Promise.resolve(this.orders);
-  }
+  private errorHandler(error: HttpErrorResponse) {
+		if (error.error instanceof Error) {
+			console.error('An error occurred:', error.error.message); 
+		} else {
+			console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
+		}
+		return throwError('Something bad happened; please try again later.');
+	}
 }

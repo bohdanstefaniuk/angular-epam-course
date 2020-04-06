@@ -2,9 +2,9 @@
 	<p><strong>Products</strong></p>
 	<button (click)="onAdd()">Add new product</button>
 	<ul>
-		<li *ngFor="let product of products | async" >
-			{{ product.name }}
+		<li *ngFor="let product of products | async" class="product">
 			<button (click)="onEdit(product.id)">Edit</button>
+			{{ product.name }}
 		</li>
 	</ul>
 </div>

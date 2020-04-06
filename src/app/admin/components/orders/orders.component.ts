@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService, Order } from 'src/app/orders';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-orders',
@@ -7,7 +8,7 @@ import { OrderService, Order } from 'src/app/orders';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-  orders: Promise<Array<Order>>;
+  orders: Observable<Array<Order>>;
 
   constructor(
     private orderService: OrderService

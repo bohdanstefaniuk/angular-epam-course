@@ -1,3 +1,10 @@
+# Version 1.6
+- Added json-server for dev purposes;
+- Changed product service, added http client support (as Promise);
+- Changed order service, added http client support (as Observable);
+- Improved orders UI;
+- Added little UI improvements in admin panel;
+
 # Version 1.5
 - Added auth service;
 - Added Login ang Logout screens;

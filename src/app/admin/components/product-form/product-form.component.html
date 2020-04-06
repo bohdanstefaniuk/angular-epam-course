@@ -15,6 +15,10 @@
 		</select>
 	</div>
 	<div>
+		<p>Description</p>
+		<textarea type="number" id="description" [(ngModel)]="product.description">{{ product.description }}</textarea>
+	</div>
+	<div>
 		<p class="checkbox-title">Is available: </p>
 		<input type="checkbox" [(ngModel)]="product.isAvailable">
 	</div>

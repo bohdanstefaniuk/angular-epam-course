@@ -1,15 +1,14 @@
 <div class="product-container">
 	<h3>{{ product.name }}</h3>
-	<p>
-		<strong>Description</strong>
-		<br>
-		<span>{{ product.description }}</span>
-	</p>
-	<ul>
-		<li>Price: {{ product.price | currency:'USD' }} </li>
-		<li>Category: {{ productCategory | uppercase }}</li>
-		<li *ngIf="product.isAvailable; else elseBlock" class="in-stock">In stock.</li>
-		<ng-template #elseBlock><li class="not-in-stock">Not in stock</li></ng-template>
-	</ul>
+	<div>
+		<ul>
+			<li>Price: {{ product.price | currency:'USD' }} </li>
+			<li>Category: {{ productCategory | uppercase }}</li>
+			<li *ngIf="product.isAvailable; else elseBlock" class="in-stock">In stock.</li>
+			<ng-template #elseBlock><li class="not-in-stock">Not in stock</li></ng-template>
+		</ul>
+		<p><strong>Description</strong></p>
+		<p><span>{{ product.description }}</span></p>
+	</div>
 	<button type="button" (click)="onBuy()" [disabled]="!product.isAvailable">Buy</button>
 </div>
