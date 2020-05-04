@@ -1,3 +1,8 @@
+# Version 1.8
+- In order form added reactive forms;
+- Added multiply phone input;
+- Added input fields validators;
+
 # Version 1.6.1
 - Added http interceptor which print selected requests duration;
 
