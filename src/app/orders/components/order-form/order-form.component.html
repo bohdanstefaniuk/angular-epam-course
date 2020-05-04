@@ -1,12 +1,40 @@
 <h3>Complete you order</h3>
 <div class="order-form-container">
-	<div>
-		<p>Your name</p>
-		<input type="text" id="userName" [(ngModel)]="order.ordererName">
-	</div>
-	<div>
-		<p>Your address</p>
-		<input type="text" id="address" [(ngModel)]="order.address">
-	</div>
-	<button type="button" (click)="onSubmit()">Submit</button>
+	<form [formGroup]="orderForm" (ngSubmit)="submit()">
+		<div>
+			<label for="fullName">Your name</label>
+			<input type="text" id="fullName" name="fullName" formControlName="fullName">
+			<div class="validation-error"
+				*ngIf="getIsControlInvalid('fullName')">
+				Please set your name.
+			</div>
+		</div>
+		<div>
+			<label for="email">Email</label>
+			<input type="email" id="email" name="email" formControlName="email">
+			<div class="validation-error"
+				*ngIf="getIsControlInvalid('email')">
+				Please enter valid email address.
+			</div>
+		</div>
+		<div formArrayName="phones">
+			<label>Phone number</label>
+			<button type="button" (click)="onAddPhone()">+</button>
+			<div class="form-group" *ngFor="let phone of orderForm.get('phones')['controls']; let i = index">
+				<input class="form-control" formControlName="{{i}}" />
+			</div>
+		</div>
+		<div>
+			<label for="isSelfDelivery">
+				Self delivery?
+				<input type="checkbox" id="isSelfDelivery" name="isSelfDelivery" formControlName="isSelfDelivery">
+			</label>
+		</div>
+		<div *ngIf="!orderForm.controls['isSelfDelivery'].value">
+			<label for="address">Your address</label>
+			<textarea name="address" id="address" formControlName="address" cols="30" rows="10">
+			</textarea>
+		</div>
+		<button type="submit" [disabled]="orderForm.invalid">Submit</button>
+	</form>
 </div>

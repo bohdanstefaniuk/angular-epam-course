@@ -18,3 +18,20 @@ div input {
 	margin: 0;
 	width: 290px;
 }
+
+textarea {
+	display: block;
+}
+
+.validation-error {
+	color: red;
+}
+
+button[type="submit"] {
+	margin-top: 15px;
+}
+
+button[type="button"] {
+	display: inline;
+	margin-left: 10px;
+}

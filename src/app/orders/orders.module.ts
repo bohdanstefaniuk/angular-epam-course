@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { OrderFormComponent } from './components';
 
@@ -8,7 +8,8 @@ import { OrderFormComponent } from './components';
   declarations: [OrderFormComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [OrderFormComponent]
 })

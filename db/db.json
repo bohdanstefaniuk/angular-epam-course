@@ -73,6 +73,23 @@
         }
       ],
       "id": 2
+    },
+    {
+      "items": [
+        {
+          "productId": 1,
+          "quantity": 3
+        },
+        {
+          "productId": 3,
+          "quantity": 2
+        }
+      ],
+      "fullName": "Bohdan Stefaniuk",
+      "email": "bogdanstefanjuk@gmail.com",
+      "isSelfDelivery": true,
+      "address": "",
+      "id": 4
     }
   ]
 }

@@ -1,8 +1,13 @@
 <p>Orders</p>
 <ul>
 	<li *ngFor="let order of orders | async" class="order">
-		<p>Orderer: {{ order.ordererName }}</p>
-		<p>Address: {{ order.address }}</p>
+		<p>Orderer: {{ order.fullName }}</p>
+		<p>Phone: {{ order.phone }}</p>
+		<p>Email: {{ order.email }}</p>
+		<p *ngIf="order.isSelfDelivery;else address ">Self delivery</p>
+		<ng-template #address>
+			<p>Address: {{ order.address }}</p>
+		</ng-template>
 		<p>Items quantity: {{ order.items.length }}</p>
 	</li>
 </ul>

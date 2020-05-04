@@ -12,12 +12,12 @@ import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './layout/components/not-found/not-found.component';
 import { OrdersModule } from './orders/orders.module';
 import { CartService } from './cart';
-import { AdminModule } from './admin/admin.module';
 import { ProductsService } from './products';
 import { OrderService } from './orders';
 import { LoginComponent } from './layout/components/login/login.component';
 import { AuthService } from './core/services/auth.service';
 import { LogoutComponent } from './layout/components';
+import { interceptorProviders } from './core/interceptors';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { LogoutComponent } from './layout/components';
     OrdersModule,
     AppRoutingModule
   ],
-  providers: [CartService, ProductsService, OrderService, AuthService],
+  providers: [CartService, ProductsService, OrderService, AuthService, interceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

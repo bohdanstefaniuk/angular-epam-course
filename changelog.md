@@ -1,3 +1,6 @@
+# Version 1.6.1
+- Added http interceptor which print selected requests duration;
+
 # Version 1.6
 - Added json-server for dev purposes;
 - Changed product service, added http client support (as Promise);
