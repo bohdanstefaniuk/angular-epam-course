@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 import { tap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -21,8 +21,7 @@ export class OrderFormComponent implements OnDestroy {
   constructor(
     private orderService: OrderService,
     private cart: CartService,
-    private router: Router,
-    private formBuilder: FormBuilder
+    private router: Router
   ) {
     this.orderForm = new FormGroup({
       fullName: new FormControl('', [
@@ -36,6 +35,10 @@ export class OrderFormComponent implements OnDestroy {
       isSelfDelivery: new FormControl(false),
       address: new FormControl()
     });
+  }
+
+  get phones() {
+    return this.orderForm.get('phones');
   }
 
   getIsControlInvalid(controlName: string): boolean {
@@ -58,13 +61,14 @@ export class OrderFormComponent implements OnDestroy {
   }
 
   private prepareOrder(): Order {
-    const order = new Order();
     const orderItems = this.cart.cartItems.map((item) => {
       return new OrderItem(item.productId, item.count);
     });
     const phones = this.orderForm.value.phones.map((item) => {
       return item || '';
     }).join(', ');
+
+    const order = new Order();
     order.items = orderItems;
     order.fullName = this.orderForm.value.fullName;
     order.email = this.orderForm.value.email;

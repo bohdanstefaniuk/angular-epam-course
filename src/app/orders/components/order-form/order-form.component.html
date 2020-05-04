@@ -20,7 +20,7 @@
 		<div formArrayName="phones">
 			<label>Phone number</label>
 			<button type="button" (click)="onAddPhone()">+</button>
-			<div class="form-group" *ngFor="let phone of orderForm.get('phones')['controls']; let i = index">
+			<div class="form-group" *ngFor="let phone of phones['controls']; let i = index">
 				<input class="form-control" formControlName="{{i}}" />
 			</div>
 		</div>
