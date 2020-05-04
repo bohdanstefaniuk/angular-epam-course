@@ -1,3 +1,7 @@
+# Version 1.8.1
+- Added FormBuilder;
+- Moved validation message generation from template to component class;
+
 # Version 1.8
 - In order form added reactive forms;
 - Added multiply phone input;

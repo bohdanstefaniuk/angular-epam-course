@@ -6,7 +6,7 @@
 			<input type="text" id="fullName" name="fullName" formControlName="fullName">
 			<div class="validation-error"
 				*ngIf="getIsControlInvalid('fullName')">
-				Please set your name.
+				{{ getValidationMessage('fullName') }}
 			</div>
 		</div>
 		<div>
@@ -14,7 +14,7 @@
 			<input type="email" id="email" name="email" formControlName="email">
 			<div class="validation-error"
 				*ngIf="getIsControlInvalid('email')">
-				Please enter valid email address.
+				{{ getValidationMessage('email') }}
 			</div>
 		</div>
 		<div formArrayName="phones">
