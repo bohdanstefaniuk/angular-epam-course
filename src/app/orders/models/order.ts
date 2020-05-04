@@ -4,7 +4,7 @@ export class Order {
     id: number;
     fullName: string;
     email: string;
-    phone: string;
+    phones: string;
     isSelfDelivery: boolean;
     address: string;
     items: Array<OrderItem>;

@@ -2,7 +2,7 @@
 <ul>
 	<li *ngFor="let order of orders | async" class="order">
 		<p>Orderer: {{ order.fullName }}</p>
-		<p>Phone: {{ order.phone }}</p>
+		<p>Phone: {{ order.phones }}</p>
 		<p>Email: {{ order.email }}</p>
 		<p *ngIf="order.isSelfDelivery;else address ">Self delivery</p>
 		<ng-template #address>

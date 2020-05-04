@@ -68,7 +68,7 @@ export class OrderFormComponent implements OnDestroy {
     order.items = orderItems;
     order.fullName = this.orderForm.value.fullName;
     order.email = this.orderForm.value.email;
-    order.phone = phones;
+    order.phones = phones;
     order.isSelfDelivery = this.orderForm.value.isSelfDelivery;
     order.address = this.orderForm.value.address;
     return order;
