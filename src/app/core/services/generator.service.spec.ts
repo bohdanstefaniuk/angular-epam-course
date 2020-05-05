@@ -3,12 +3,8 @@ import { TestBed } from '@angular/core/testing';
 import { GeneratorService, GeneratorFactory } from './generator.service';
 
 describe('GeneratorService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    providers: [GeneratorService]
-  }));
-
   it('should generate 8 length string', () => {
-    const service: GeneratorService = TestBed.get(GeneratorService);
+    const service: GeneratorService = new GeneratorService();
 
     // Act
     const randomString = service.generate(8);
