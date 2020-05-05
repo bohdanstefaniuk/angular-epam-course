@@ -24,13 +24,14 @@ describe('AdminProductsComponent', () => {
 		expect(component).toBeTruthy();
 	});
 
-	it('should render 2 product in template', async () => {
+	it('should render 2 product in template', (done: DoneFn) => {
 		const requestMock = http.expectOne('http://localhost:3000/products');
 		requestMock.flush(getProductsData());
 
 		// Act with Assert
 		component.products.then((products) => {
 			expect(products.length).toBe(2);
+			done();
 		});
 	});
 

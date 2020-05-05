@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { GeneratorService, GeneratorFactory } from './generator.service';
 
 describe('GeneratorService', () => {
-  it('should generate 8 length string', () => {
+  it('should generate string of length  8', () => {
     const service: GeneratorService = new GeneratorService();
 
     // Act
@@ -19,7 +19,7 @@ describe('GeneratorFactory', () => {
     providers: [GeneratorService]
   }));
 
-  it('should generate 5 length string', () => {
+  it('should generate string of length 5', () => {
     const service: GeneratorService = new GeneratorService();
 
     // Act
