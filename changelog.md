@@ -4,6 +4,17 @@
 - Added tests for Generator factory function;
 - Added tests for OrderBy pipe;
 - Added integration tests for AdminProducts component;
+- Added shallow tests for App component;
+- Generated coverage report:
+
+```
+=============================== Coverage summary ===============================
+Statements   : 56.28% ( 103/183 )
+Branches     : 38.46% ( 10/26 )
+Functions    : 39.13% ( 27/69 )
+Lines        : 54.27% ( 89/164 )
+================================================================================
+```
 
 # Version 1.8.1
 - Added FormBuilder;
