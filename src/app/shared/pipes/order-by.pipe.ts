@@ -7,13 +7,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class OrderByPipe implements PipeTransform {
   transform(values: any, orderBy: string, orderAsc: boolean): any {
     return values.sort((a, b) => {
-        if (a[orderBy] < b[orderBy] && orderAsc) {
-          return -1;
-        }
-        if (a[orderBy] > b[orderBy] && orderAsc) {
-          return 1;
-        }
-        return 0;
+      const first = a[orderBy];
+      const second = b[orderBy];
+      if (orderAsc) {
+        return first < second ? -1 : first > second ? 1 : 0;
+      } else {
+        return first > second ? -1 : first < second ? 1 : 0;
+      }
     });
   }
 }

@@ -1,3 +1,9 @@
+# Version 1.9
+- Added tests for Cart service;
+- Added tests for Generator service;
+- Added tests for Generator factory function;
+- Added tests for OrderBy pipe;
+
 # Version 1.8.1
 - Added FormBuilder;
 - Moved validation message generation from template to component class;
