@@ -1,8 +1,9 @@
 # Version 1.9
-- Added tests for Cart service;
+- Added integration tests for Cart service;
 - Added tests for Generator service;
 - Added tests for Generator factory function;
 - Added tests for OrderBy pipe;
+- Added integration tests for AdminProducts component;
 
 # Version 1.8.1
 - Added FormBuilder;
