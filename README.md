@@ -1,8 +1,12 @@
 # Shop
 
-🌏
+## Demo
 
-Check deployed homework here: https://teamkiller7112.github.io/angular-epam-course/
+Deployed application: https://teamkiller7112.github.io/angular-epam-course/
+
+Demo:
+![Demo](demo.gif)
+
 
 ## Development server
 
