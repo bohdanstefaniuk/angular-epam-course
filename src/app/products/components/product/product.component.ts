@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 import { Product } from '../../../shared/models/product';
-import { ProductsService } from '../../services/products.service';
+import { ProductsService } from '../../services';
 import { CartService } from 'src/app/cart';
 
 @Component({

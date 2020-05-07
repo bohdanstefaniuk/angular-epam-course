@@ -5,11 +5,10 @@ import { Observable, throwError } from 'rxjs';
 import { retry, share, catchError } from 'rxjs/operators';
 
 import { Order } from '../models/order';
+import { OrderService } from '.';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class OrderService {
+@Injectable()
+export class OrderHttpService implements OrderService {
   private baseUrl = 'http://localhost:3000/orders';
 
   constructor(

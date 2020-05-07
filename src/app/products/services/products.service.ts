@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Product } from '../../shared/models/product';
+import { ProductsService } from './products.service.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ProductsService {
+@Injectable()
+export class ProductsHttpService implements ProductsService {
   private baseProductsUrl = 'http://localhost:3000/products';
 
   constructor(private http: HttpClient) {}
