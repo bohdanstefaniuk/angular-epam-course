@@ -5,6 +5,7 @@
 Deployed application: https://teamkiller7112.github.io/angular-epam-course/
 
 Demo:
+
 ![Demo](demo.gif)
 
 
