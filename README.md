@@ -1,8 +1,8 @@
 # Shop
 
-**!!! Currently unaviliable :-(**
+🌏
 
-🌏Check deployed homework here: https://angular-epam-course.azurewebsites.net
+Check deployed homework here: https://teamkiller7112.github.io/angular-epam-course/
 
 ## Development server
 
